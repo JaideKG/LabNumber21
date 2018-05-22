@@ -1,0 +1,3 @@
+﻿1>------ Build started: Project: LabNumber21, Configuration: Debug Any CPU ------
+1>  LabNumber21 -> C:\Users\jaide\source\repos\LabNumber21\LabNumber21\bin\LabNumber21.dll
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
