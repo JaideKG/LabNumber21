@@ -37,11 +37,11 @@ namespace LabNumber21.Controllers
         //this link is on the registration page
         //which sends the user input here
         //and then displays the view named Welcome
-        public ActionResult Welcome(int input = 0)
-        {
-            ViewBag.data = input;
-            return View();
-        }
+        //public ActionResult Welcome(int input = 0)
+        //{
+        //    ViewBag.data = input;
+        //    return View();
+        //}
 
         //parameters are automatically parsed in from query string
         public ActionResult Register(string FirstName = "",
