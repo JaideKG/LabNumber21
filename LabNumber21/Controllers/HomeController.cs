@@ -45,13 +45,16 @@ namespace LabNumber21.Controllers
 
         //parameters are automatically parsed in from query string
         public ActionResult Register(string FirstName = "",
-            string LastName = "", string PhoneNumber="", string Email = "",  string Password = "")
+            string LastName = "", string PhoneNumber="", string Email = "",  string Password = "", string CoffeeType = "", string PastryType = "")
         {
+
             ViewBag.FirstName = FirstName;
             ViewBag.LastName = LastName;
             ViewBag.PhoneNumber = PhoneNumber;
             ViewBag.Email = Email;
             ViewBag.Password = Password;
+            ViewBag.CoffeeType = CoffeeType;
+            ViewBag.PastryType = PastryType;
 
             return View();
         }

@@ -1,45 +1,68 @@
 ﻿<form>
-@{
-    ViewBag.Title = "Registration";
-}
+    @{
+        ViewBag.Title = "Registration";
+    }
 
-<h2>Please fill the form to register!</h2>
+    <h2>Please fill the form to register!</h2>
 
-@*this form will take input from the user and send it to
-    my Welcome action result*@
+    @*this form will take input from the user and send it to
+        my Welcome action result*@
 
 
 </form>
 
-<hr />
+
 <form class="form-horizontal" action="/Home/Register" method="get">
-    <div class="form-group">
-        <label for="First Name" class="col-sm-6 control-label">First Name:</label>
-        <div class="col-sm-6">
-            <input type="text" name="FirstName" class="form-control" />
+    <fieldset>
+        <div class="form-group">
+            <label for="First Name" class="col-sm-6 control-label">FirstName:</label>
+            <div class="col-sm-6">
+                <input type="text" name="FirstName" class="form-control" />
+            </div>
+            <label for="Last Name" class="col-sm-6 control-label">LastName:</label>
+            <div class="col-sm-6">
+                <input type="text" name="LastName" class="form-control" /><br />
+            </div>
+            <label for="PhoneNumber" class="col-sm-6 control-label">PhoneNumber:</label>
+            <div class="col-sm-6">
+                <input type="number" name="PhoneNumber" class="form-control" /><br />
+            </div>
+            <label for="Email" class="col-sm-6 control-label">Email:</label>
+            <div class="col-sm-6">
+                <input type="text" name="Email" class="form-control" />
+            </div>
+            <label for="Password" class="col-sm-6 control-label">Password:</label>
+            <div class="col-sm-6">
+                <input type="text" name="Password" class="form-control" />
+            </div>
+            <label for="Password" class="col-sm-6 control-label">CoffeeType:</label>
+            <div class="col-sm-6">
+                <input type="text" name="CoffeeType" class="form-control" />
+            </div>
+            <label for="Password" class="col-sm-6 control-label">PastryType:</label>
+            <div class="col-sm-6">
+                <input type="text" name="PastryType" class="form-control" />
+            </div>
         </div>
-        <label for="Last Name" class="col-sm-6 control-label">Last Name:</label>
-        <div class="col-sm-6">
-            <input type="text" name="LastName" class="form-control" /><br />
+        <div class="form-group">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4" style="text-align:center">
+                <input type="submit" class="btn btn-primary" name="Register!" />
+            </div>
+            <div class="col-sm-4"></div>
         </div>
-        <label for="PhoneNumber" class="col-sm-6 control-label">PhoneNumber:</label>
-        <div class="col-sm-6">
-            <input type="number" name="PhoneNumber" class="form-control" /><br />
-        </div>
-        <label for="Email" class="col-sm-6 control-label">Email:</label>
-        <div class="col-sm-6">
-            <input type="text" name="Email" class="form-control" />
-        </div>
-        <label for="Password" class="col-sm-6 control-label">Password:</label>
-        <div class="col-sm-6">
-            <input type="text" name="Password" class="form-control" />
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4" style="text-align:center">
-            <input type="submit" class="btn btn-primary" name="Register!" />
-        </div>
-        <div class="col-sm-4"></div>
-    </div>
+    </fieldset>
 </form>
+
+<script>
+    function CheckFirstName() {
+        var firstname = document.getElementById("FirstName").value;
+        if (!((firstname >> 0)> 0)) {
+            //alert(year + " is outside the valid range");
+            document.getElementById("FirstNameWarning").innerHTML =
+                "<b>" + firstname + " should only be alpha characters</b>";
+            return false;
+        }
+        return true;
+    }
+</script>
