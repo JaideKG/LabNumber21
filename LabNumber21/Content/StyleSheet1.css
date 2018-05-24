@@ -1,2 +1,75 @@
-﻿/*body {*/
-/*}*/
+﻿h1 {
+    color: purple
+}
+
+h1 {
+    font-size: 250%
+}
+
+a {
+    font-family: fantasy
+}
+
+img {
+    width: 50%
+}
+
+a {
+    font: 100%
+}
+
+h2 {
+    font-size: 150%
+}
+
+h2 {
+    color: rebeccapurple
+}
+
+h3 {
+    font-size: 150%
+}
+
+h3 {
+    color: rebeccapurple
+}
+
+h4 {
+    font-size: 150%
+}
+
+h4 {
+    color: rebeccapurple
+}
+
+p {
+    font-family: sans-serif
+}
+
+p {
+    font-style: normal
+}
+
+p {
+    font-weight: bolder
+}
+
+a {
+    font-family: sans-serif
+}
+
+a {
+    font-weight: bolder
+}
+
+a {
+    font-style: normal
+}
+
+p {
+    background-color: lightpink
+}
+
+a {
+    background-color: lightpink
+}

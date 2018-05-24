@@ -12,7 +12,8 @@
 </form>
 
 
-<form class="form-horizontal" action="/Home/Register" method="get">
+<form class="form-horizontal" action="/Home/Register" method="get" onsubmit="CheckFirstName()">
+   
     <fieldset>
         <div class="form-group">
             <label for="First Name" class="col-sm-6 control-label">FirstName:</label>
@@ -55,14 +56,14 @@
 </form>
 
 <script>
-    function CheckFirstName() {
-        var firstname = document.getElementById("FirstName").value;
-        if (!((firstname >> 0)> 0)) {
-            //alert(year + " is outside the valid range");
-            document.getElementById("FirstNameWarning").innerHTML =
-                "<b>" + firstname + " should only be alpha characters</b>";
-            return false;
+        function CheckFirstName() {
+            var firstname = document.getElementById("FirstName").value;
+            if (!((firstname >> 0) > 0)) {
+                //alert(year + " is outside the valid range");
+                document.getElementById("FirstNameWarning").innerHTML =
+                    "<b>" + firstname + " should only be alpha characters</b>";
+                return false;
+            }
+            return true;
         }
-        return true;
-    }
-</script>
+    </script>
