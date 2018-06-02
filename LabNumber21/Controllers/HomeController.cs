@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LabNumber21.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,14 +11,18 @@ namespace LabNumber21.Controllers
     {
         public ActionResult Index()
         {
+			CoffeeEntities orm = new CoffeeEntities();
+
+			ViewBag.Items = orm.Items.ToList();
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult About(int ID) 
         {
-            ViewBag.Message = "The GC Coffee Shop is a new cafe epicenter in the city of Detroit. We strive to provide the best quality of robust coffee so that you are ready to accomplish the day with enthusiasm! Our web app now available, offers our clients the perks of free coffee and other cool prizes when registered. All it takes is a few seconds before your next free cup of espresso!";
+			CoffeeEntities orm = new CoffeeEntities();
 
-            return View();
+			ViewBag.Users = orm.Users.ToList();
+			return View();
         }
 
         public ActionResult Contact()
@@ -44,18 +49,35 @@ namespace LabNumber21.Controllers
         //}
 
         //parameters are automatically parsed in from query string
-        public ActionResult Register(string FirstName = "",
-            string LastName = "", string PhoneNumber="", string Email = "",  string Password = "", string CoffeeType = "", string PastryType = "")
+        public ActionResult Register(string Name = "", string CoffeeType = "", string Drinkware="")
         {
+			CoffeeEntities orm = new CoffeeEntities();
+	
+			User user = new User();
 
-            ViewBag.FirstName = FirstName;
-            ViewBag.LastName = LastName;
-            ViewBag.PhoneNumber = PhoneNumber;
-            ViewBag.Email = Email;
-            ViewBag.Password = Password;
+			user.Name = Name;
+			user.CoffeeType = CoffeeType;
+			user.Drinkware = Drinkware;
+
+			if (ModelState.IsValid)
+			{
+				//if the model is valid then we add to our DB
+				orm.Users.Add(user);
+				//we have to save our changes or they won't stay in our DB
+				orm.SaveChanges();
+				ViewBag.message = $"{user.Name} has been added";
+			}
+			else
+			{
+				ViewBag.message = "Item is not valid, cannot add to DB.";
+			}
+
+
+			ViewBag.Name = Name;
             ViewBag.CoffeeType = CoffeeType;
-            ViewBag.PastryType = PastryType;
+            ViewBag.Drinkware = Drinkware;
 
+			
             return View();
         }
     }

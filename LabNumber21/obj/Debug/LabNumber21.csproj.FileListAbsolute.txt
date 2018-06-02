@@ -89,3 +89,7 @@ c:\users\jaide\source\repos\LabNumber21\LabNumber21\obj\Debug\LabNumber21.csproj
 c:\users\jaide\source\repos\LabNumber21\LabNumber21\obj\Debug\LabNumber21.dll
 c:\users\jaide\source\repos\LabNumber21\LabNumber21\obj\Debug\LabNumber21.pdb
 C:\Users\jaide\source\repos\LabNumber21\LabNumber21\obj\Debug\LabNumber21.csprojAssemblyReference.cache
+C:\Users\jaide\source\repos\LabNumber21\LabNumber21\bin\EntityFramework.dll
+C:\Users\jaide\source\repos\LabNumber21\LabNumber21\bin\EntityFramework.SqlServer.dll
+C:\Users\jaide\source\repos\LabNumber21\LabNumber21\bin\EntityFramework.xml
+C:\Users\jaide\source\repos\LabNumber21\LabNumber21\bin\EntityFramework.SqlServer.xml

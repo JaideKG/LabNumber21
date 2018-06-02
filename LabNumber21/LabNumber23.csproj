@@ -160,10 +160,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CoffeeEntities.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CoffeeEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoffeeEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CoffeeEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CoffeeEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Item.cs">
+      <DependentUpon>CoffeeEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>CoffeeEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -178,6 +189,12 @@
     <Content Include="Models\CoffeeEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CoffeeEntities.Context.cs</LastGenOutput>
+      <DependentUpon>CoffeeEntities.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\CoffeeEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CoffeeEntities.edmx</DependentUpon>
+      <LastGenOutput>CoffeeEntities.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -188,9 +205,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CoffeeEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\CoffeeEntities.edmx.diagram">
+    <Content Include="Models\CoffeeEntities.edmx.diagram">
       <DependentUpon>CoffeeEntities.edmx</DependentUpon>
-    </None>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
