@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "RegisterItem";
+}
+
+<h2>Please fill the form to register your Item</h2>
+
+@*this form will take input from the user and send it to
+    my Welcome action result*@
+
+<form class="form-horizontal" action="/Home/Register" method="get" onsubmit="CheckFirstName()">
+
+    <fieldset>
+        <div class="form-group">
+            <label for="Name" class="col-sm-6 control-label">Name:</label>
+            <div class="col-sm-6">
+                <input type="text" name="Name" class="form-control" />
+            </div>
+            <label for="Description" class="col-sm-6 control-label">Description:</label>
+            <div class="col-sm-6">
+                <input type="text" name="Description" class="form-control" /><br />
+            </div>
+            <label for="Quantity" class="col-sm-6 control-label">Quantity:</label>
+            <div class="col-sm-6">
+                <input type="number" name="Quantity" class="form-control" /><br />
+            </div>
+            <label for="Price" class="col-sm-6 control-label">Price:</label>
+            <div class="col-sm-6">
+                <input type="text" name="Price" class="form-control" /><br />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4" style="text-align:center">
+                <input type="submit" class="btn btn-primary" name="Register!" />
+                    <a href="http://localhost:51052/Home/AddItem"></a>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </fieldset>
+</form>
+
+<script>
+        function CheckFirstName() {
+            var firstname = document.getElementById("FirstName").value;
+            if (!((firstname >> 0) > 0)) {
+                //alert(year + " is outside the valid range");
+                document.getElementById("FirstNameWarning").innerHTML =
+                    "<b>" + firstname + " should only be alpha characters</b>";
+                return false;
+            }
+            return true;
+        }
+</script>
+

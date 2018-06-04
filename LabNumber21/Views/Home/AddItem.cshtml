@@ -1,10 +1,13 @@
-﻿<h2>
-@{
-    ViewBag.Title = "Welcome";
-}              
-</h2>
+﻿@{
+    ViewBag.Title = "AddItem";
+}
+
+<h2>Add a new Item</h2>
+
+
 <table style="width:100%">
     <tr>
+        <th>ID</th>
         <th>Name</th>
         <th>Description</th>
         <th>Quantity</th>
@@ -14,13 +17,16 @@
 
     </tr>
     <tr>
+        <td>@ViewBag.ID</td>
         <td>@ViewBag.Name</td>
         <td>@ViewBag.Description</td>
         <td>@ViewBag.Quantity</td>
         <td>@ViewBag.Price</td>
 
     </tr>
-    
+
 </table>
 
 @ViewBag.message
+
+

@@ -1,6 +1,7 @@
 ﻿using LabNumber21.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -16,21 +17,52 @@ namespace LabNumber21.Controllers
 			ViewBag.Items = orm.Items.ToList();
             return View();
         }
-
-        public ActionResult About(int ID) 
-        {
-			CoffeeEntities orm = new CoffeeEntities();
-
-			ViewBag.Users = orm.Users.ToList();
+		public ActionResult About()
+		{
 			return View();
+		}
+		public ActionResult Edit()
+		{
+			return View();
+		}
+		[HttpGet]
+		public ActionResult Edit(int ID)
+		{
+				CoffeeEntities orm = new CoffeeEntities();
+				Item item = new Item();
+
+			ViewBag.Items = orm.Items.Where(x => x.ID == ID).ToList();
+			return View(ID);
+			
         }
 
-        public ActionResult Contact()
+        public ActionResult Contact(int ID)
         {
-            ViewBag.Message = "Your contact page.";
+			CoffeeEntities ORM = new CoffeeEntities();
+			//we build this object so that we can make a transaction
+			DbContextTransaction DeleteCustomerTransaction = ORM.Database.BeginTransaction();
+			Item temp = new Item();
+			try
+			{
+				//we first find the specific item by the items id
+				temp = ORM.Items.Find(ID);
+				ORM.Items.Remove(temp);
+				ORM.SaveChanges();
+				DeleteCustomerTransaction.Commit(); //if the remove was successful we commit the transaction
+				ViewBag.Message = $"{temp.Description} was removed";
+			}
+			catch (Exception ex)
+			{
+				//if the remove was unsuccessful then we 
+				//roll back the transaction so no data is lost
+				DeleteCustomerTransaction.Rollback();
+				ViewBag.Message = "Item could not be removed";
+			}
 
-            return View();
-        }
+			return View();
+
+		}
+	
         //this will go to my registration view
         //this will go to my registration view
         //where I will take user input
@@ -49,23 +81,60 @@ namespace LabNumber21.Controllers
         //}
 
         //parameters are automatically parsed in from query string
-        public ActionResult Register(string Name = "", string CoffeeType = "", string Drinkware="")
-        {
+		public ActionResult RegisterItem()
+		{
+			return View();
+		}
+		public ActionResult AddItem(string Name = "", string Description = "", string Quantity = "", string Price = "")
+		{
 			CoffeeEntities orm = new CoffeeEntities();
-	
-			User user = new User();
 
-			user.Name = Name;
-			user.CoffeeType = CoffeeType;
-			user.Drinkware = Drinkware;
+			Item item = new Item();
+			item.Name = Name;
+			item.Description = Description;
+			item.Quantity = Quantity;
+			item.Price = Price;
 
 			if (ModelState.IsValid)
 			{
 				//if the model is valid then we add to our DB
-				orm.Users.Add(user);
+				orm.Items.Add(item);
 				//we have to save our changes or they won't stay in our DB
 				orm.SaveChanges();
-				ViewBag.message = $"{user.Name} has been added";
+				//ViewBag.message = $"{item.Name} has been added";
+				
+			}
+			else
+			{
+				ViewBag.message = "Item is not valid, cannot add to DB.";
+			}
+
+			ViewBag.Name = Name;
+			ViewBag.Description = Description;
+			ViewBag.Quantity = Quantity;
+			ViewBag.Price = Price;
+
+			return View();
+		
+		}
+        public ActionResult Register(string Name = "", string Description = "", string Quantity="", string Price = "")
+        {
+			CoffeeEntities orm = new CoffeeEntities();
+	
+			Item item = new Item();
+
+			item.Name = Name;
+			item.Description = Description;
+			item.Quantity = Quantity;
+			item.Price = Price;
+
+			if (ModelState.IsValid)
+			{
+				//if the model is valid then we add to our DB
+				orm.Items.Add(item);
+				//we have to save our changes or they won't stay in our DB
+				orm.SaveChanges();
+				//ViewBag.message = $"{item.Name} has been added";
 			}
 			else
 			{
@@ -74,11 +143,13 @@ namespace LabNumber21.Controllers
 
 
 			ViewBag.Name = Name;
-            ViewBag.CoffeeType = CoffeeType;
-            ViewBag.Drinkware = Drinkware;
+            ViewBag.Description = Description;
+            ViewBag.Quantity = Quantity;
+			ViewBag.Price = Price;
 
 			
             return View();
         }
+
     }
 }

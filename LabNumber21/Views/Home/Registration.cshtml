@@ -3,7 +3,7 @@
         ViewBag.Title = "Registration";
     }
 
-    <h2>Please fill the form to register!</h2>
+    <h2>Add a new Item</h2>
 
     @*this form will take input from the user and send it to
         my Welcome action result*@
@@ -13,33 +13,41 @@
 
 
 <form class="form-horizontal" action="/Home/Register" method="get" onsubmit="CheckFirstName()">
-   
-    <fieldset>
-        <div class="form-group">
-            <label for="Name" class="col-sm-6 control-label">Name:</label>
-            <div class="col-sm-6">
-                <input type="text" name="Name" class="form-control" />
-            </div>
-            <label for="CoffeeType" class="col-sm-6 control-label">Coffee Type:</label>
-            <div class="col-sm-6">
-                <input type="text" name="CoffeeType" class="form-control" /><br />
-            </div>
-            <label for="Drinkware" class="col-sm-6 control-label">Drinkware:</label>
-            <div class="col-sm-6">
-                <input type="number" name="Drinkware" class="form-control" /><br />
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4" style="text-align:center">
-                <input type="submit" class="btn btn-primary" name="Register!" />
-            </div>
-            <div class="col-sm-4"></div>
-        </div>
-    </fieldset>
-</form>
+    <form class="form-horizontal" action="/Home/Register" method="get" onsubmit="CheckDescription()">
+        <form class="form-horizontal" action="/Home/Register" method="get" onsubmit="CheckQuantity()">
+            <form class="form-horizontal" action="/Home/Register" method="get" onsubmit="CheckPrice()">
 
-<script>
+
+                <fieldset>
+                    <div class="form-group">
+                        <label for="Name" class="col-sm-6 control-label">Name:</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="Name" class="form-control" />
+                        </div>
+                        <label for="Description" class="col-sm-6 control-label">Description:</label>
+                        <div class="col-sm-6">
+                            <input type="text" name="Description" class="form-control" /><br />
+                        </div>
+                        <label for="Quantity" class="col-sm-6 control-label">Quantity:</label>
+                        <div class="col-sm-6">
+                            <input type="number" name="Quantity" class="form-control" /><br />
+                        </div>
+                        <label for="Price" class="col-sm-6 control-label">Price:</label>
+                        <div class="col-sm-6">
+                            <input type="number" name="Price" class="form-control" /><br />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4" style="text-align:center">
+                            <input type="submit" class="btn btn-primary" name="Register!" />
+                        </div>
+                        <div class="col-sm-4"></div>
+                    </div>
+                </fieldset>
+            </form>
+
+    <script>
         function CheckFirstName() {
             var firstname = document.getElementById("FirstName").value;
             if (!((firstname >> 0) > 0)) {
