@@ -51,7 +51,7 @@ namespace LabNumber21.Controllers
 				DeleteCustomerTransaction.Commit(); //if the remove was successful we commit the transaction
 				ViewBag.Message = $"{temp.Description} was removed";
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				//if the remove was unsuccessful then we 
 				//roll back the transaction so no data is lost
@@ -117,21 +117,20 @@ namespace LabNumber21.Controllers
 			return View();
 		
 		}
-        public ActionResult Register(string Name = "", string Description = "", string Quantity="", string Price = "")
+        public ActionResult Register(string Name = "", string CoffeeType = "", string Drinkware="")
         {
 			CoffeeEntities orm = new CoffeeEntities();
 	
-			Item item = new Item();
+			User user = new User();
 
-			item.Name = Name;
-			item.Description = Description;
-			item.Quantity = Quantity;
-			item.Price = Price;
+			user.Name = Name;
+			user.CoffeeType = CoffeeType;
+			user.Drinkware = Drinkware;
 
 			if (ModelState.IsValid)
 			{
 				//if the model is valid then we add to our DB
-				orm.Items.Add(item);
+				orm.Users.Add(user);
 				//we have to save our changes or they won't stay in our DB
 				orm.SaveChanges();
 				//ViewBag.message = $"{item.Name} has been added";
@@ -143,10 +142,8 @@ namespace LabNumber21.Controllers
 
 
 			ViewBag.Name = Name;
-            ViewBag.Description = Description;
-            ViewBag.Quantity = Quantity;
-			ViewBag.Price = Price;
-
+            ViewBag.CoffeeType = CoffeeType;
+            ViewBag.Drinkware = Drinkware;
 			
             return View();
         }
