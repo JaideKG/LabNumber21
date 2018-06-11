@@ -21,21 +21,7 @@ namespace LabNumber21.Controllers
 		{
 			return View();
 		}
-		public ActionResult Edit()
-		{
-			return View();
-		}
-		[HttpGet]
-		public ActionResult Edit(int ID)
-		{
-				CoffeeEntities orm = new CoffeeEntities();
-				Item item = new Item();
-
-			ViewBag.Items = orm.Items.Where(x => x.ID == ID).ToList();
-			return View(ID);
-			
-        }
-
+		
         public ActionResult Contact(int ID)
         {
 			CoffeeEntities ORM = new CoffeeEntities();

@@ -6,7 +6,7 @@
 
     <p class="lead">Welcome to GC Coffee</p>
 
-    @*<p>   Shop!   <a href="http://localhost:51052/Home/Registration" class="">Register</a></p>*@
+    <p>   Shop!   <a href="http://localhost:51052/Home/Registration" class="">Register</a></p>
 </div>
 
 <table>
@@ -40,18 +40,19 @@
         </tr>
     }
 
+
 </table>
 
 @*These forms are used to do my different functions*@
 @*This first form is for adding a new item*@
-<form action="/Home/About">
+<form action="/Items/Edit">
     <input type="text" name="Items" />
     <input type="submit" value="Edit Item" />
 </form>
 @*This form is for finding items for a specific user*@
-<form action="/Home/Index">
+<form action="/Items/Delete">
     <input type="text" name="Items" />
     <input type="submit" value="Remove Item" />
 </form>
 
-<a href="http://localhost:51052/Home/Registration">Add a new Item</a>
+<a href="http://localhost:51052/Items/Create">Add a new Item</a>
