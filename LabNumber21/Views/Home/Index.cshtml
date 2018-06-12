@@ -2,12 +2,12 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+@*<div class="jumbotron">
 
     <p class="lead">Welcome to GC Coffee</p>
 
     <p>   Shop!   <a href="http://localhost:51052/Home/Registration" class="">Register</a></p>
-</div>
+</div>*@
 
 <table>
     <tr>
@@ -46,12 +46,12 @@
 @*These forms are used to do my different functions*@
 @*This first form is for adding a new item*@
 <form action="/Items/Edit">
-    <input type="text" name="Items" />
-    <input type="submit" value="Edit Item" />
+    <input type="number" name="id" />
+    <input type="submit" value="Edit Items" />
 </form>
 @*This form is for finding items for a specific user*@
 <form action="/Items/Delete">
-    <input type="text" name="Items" />
+    <input type="number" name="id" />
     <input type="submit" value="Remove Item" />
 </form>
 

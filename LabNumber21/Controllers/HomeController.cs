@@ -54,7 +54,7 @@ namespace LabNumber21.Controllers
         //where I will take user input
         public ActionResult Registration()
         {
-            
+      
             return View();
         }
         //this link is on the registration page
